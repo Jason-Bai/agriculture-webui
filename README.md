@@ -5,9 +5,10 @@
 ### 安装
 1. npm install
 2. npm start
+3. open http://127.0.0.1:3000
 
 ### 开发须知
-1. 在branches目录下新建branch_yourname.md，主要记录分析的中文说明
+1. 在docs/branches目录下新建branch_yourname.md，主要记录分析的中文说明
 2. branch_yourname.md内容格式为两种格式，第一种请看3，第二种请看4.
 3. feature，格式为feature/yourshortname/20160101_01：简述20160101新功能1内容，功能多了依此类推。
 4. hotfix，格式为hotfix/yourshortname/20160101_01：简述20160101线上问题1内容，功能多了依此类推。

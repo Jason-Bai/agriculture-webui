@@ -34,11 +34,9 @@
   "scripts": {
     "start": "[[ ${NODE_ENV} == \"production\" ]] && npm run start:prod || npm run start:dev",
     "start:dev": "rm -fr ./dist && npm run build:dev && node server.js",
-    "mock": "http-server -p 3001",
     "start:prod": "rm -fr ./dist && npm run build:prod && node server.js",
     "build:dev": "webpack --debug --hot --progress --colors --display-error-details --config ./webpack.dev.js",
-    "build:prod": "webpack --progress --colors --config ./webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:prod": "webpack --progress --colors --config ./webpack.prod.js"
   },
   "repository": {
     "type": "git",
