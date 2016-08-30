@@ -19,7 +19,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loaders: [ 'babel' ],
         exclude: /node_modules/,
         include: __dirname
