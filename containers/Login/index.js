@@ -5,39 +5,33 @@ class Login extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      error: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit() {
-    event.preventDefault();
-    const input = this.refs.username;
-    this.props.login(input.value);
-    input.value = '';
+    event.preventDefault()
+    const email = this.refs.email.value
+    const pass = this.refs.pass.value
   }
 
   render() {
-    const { user, logout } = this.props
     return (
-      {!user &&
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" ref="username" placeholder="Enter a username" />
-            <button className="btn btn-success" onClick={this.handleSubmit}>Log In</button>
-          </form>
-        </div>
-      }
-      {user && 
-        <div>
-          <p>You are currently logged in as {user.name}.</p>
-           <button onClick={logout}>Log Out</button>
-        </div>
-
-      }
+      <form onSubmit={this.handleSubmit}>
+        <label><input ref="email" placeholder="email" defaultValue="joe@example.com" /></label>
+        <label><input ref="pass" placeholder="password" /></label> (hint: password1) <br />
+        <button type="submit">login</button>
+        {this.state.error && (
+          <p>Bad login information</p>
+        ) }
+      </form>
     )
   }
 }
 
-
+/*
 Login.propTypes = {
   user: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
@@ -52,3 +46,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Login)
+*/
+
+export default Login

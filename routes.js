@@ -6,6 +6,7 @@ import NotFound from './containers/NotFound'
 import Login from './containers/Login'
 import Welcome from './containers/Welcome'
 
+/*
 module.exports = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
@@ -14,5 +15,15 @@ module.exports = (
     </Route>
     <Route path="/login" component={Login} />
     <Route path="*" component={NotFound} status={404} />
+  </Route>
+)
+*/
+
+module.exports = (
+  <Route path="/" component={App}>
+    <Route path="login" component={Login} />
+    <Route path="logout" component={Logout} />
+    <Route path="about" component={About} />
+    <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
   </Route>
 )
