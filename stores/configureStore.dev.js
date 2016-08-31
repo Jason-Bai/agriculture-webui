@@ -4,11 +4,11 @@ import thunkMiddleware from 'redux-thunk'
 //import api from '../middleware/api'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
-import api from './middleware/api'
+import api from '../middleware/api'
 
 //applyMiddleware(thunk, createLogger())
 
-const logger = createLogger()
+//const logger = createLogger()
 
 export default function configureStore(preloadedState) {
   const store = createStore(

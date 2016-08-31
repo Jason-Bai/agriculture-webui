@@ -49,16 +49,16 @@ export default connect(mapStateToProps)(App)
 */
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { loginUser, fetchQuote, fetchSecretQuote } from '../actions'
+import { loginUser, fetchQuote, fetchSecretQuote } from '../../actions'
 
 
-import Login from '../components/Login'
-import Navbar from '../components/Navbar'
-import Quotes from '../components/Quotes'
+import Login from '../../components/Login'
+import Navbar from '../../components/Navbar'
+import Quotes from '../../components/Quotes'
 
 class App extends Component {
   render() {
-    const { dispatch, quote, isAuthenticated, errorMessage, isSelectQuote } = ths.props
+    const { dispatch, quote, isAuthenticated, errorMessage, isSecretQuote } = this.props
 
     return (
       <div>

@@ -1,10 +1,9 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './containers/App'
-import Home from './containers/Home'
-import NotFound from './containers/NotFound'
-import Login from './containers/Login'
-import Welcome from './containers/Welcome'
+import Dashboard from './containers/Dashboard'
+import Login from './components/Login'
+import Logout from './components/Logout'
 
 /*
 module.exports = (
@@ -35,7 +34,6 @@ module.exports = (
   <Route path="/" component={App}>
     <Route path="login" component={Login} />
     <Route path="logout" component={Logout} />
-    <Route path="about" component={About} />
     <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
   </Route>
 )
