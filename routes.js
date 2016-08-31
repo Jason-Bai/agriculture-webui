@@ -19,6 +19,18 @@ module.exports = (
 )
 */
 
+function requireAuth(nextState, replace) {
+  token ='token'
+  if (!token) {
+    replace({
+      pathname: '/login',
+      state: {
+        nextPathname: nextState.location.pathname
+      }
+    })
+  }
+}
+
 module.exports = (
   <Route path="/" component={App}>
     <Route path="login" component={Login} />
