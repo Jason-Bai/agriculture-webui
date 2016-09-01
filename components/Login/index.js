@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 export default class Login extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
+    //this.handleClick = this.handleClick.bind(this)
   }
 
   render() {
@@ -12,7 +12,7 @@ export default class Login extends Component {
       <div>
         <input type='text' ref='username' className='form-control' placeholder='Username' />
         <input type='password' ref='password' className='form-control' placeholder='Password' />
-        <button onClick={(event) => this.handleClick(event)} className='btn btn-primary'>
+        <button className='btn btn-primary'>
           Login
         </button>
         {errorMessage &&
@@ -31,6 +31,5 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
-  onLoginClick: PropTypes.func.isRequired,
   errorMessage: PropTypes.string
 }
