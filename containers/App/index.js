@@ -62,15 +62,18 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar
-          isAuthenticated={isAuthenticated}
-          errorMessage={errorMessage}
-          />
-        <div className='container'>
-          <row>
-
-          </row>
+         <header className="main-header">
+          header
+         </header>
+         <aside className="main-sidebar">
+          aside
+         </aside>
+        <div className="content-wrapper">
+        content
         </div>
+        <footer className="main-footer">
+        footer
+        </footer>
       </div>
     )
   }
