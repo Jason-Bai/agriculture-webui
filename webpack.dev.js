@@ -13,6 +13,8 @@ module.exports = {
     vendor: [
       'bootstrap/dist/css/bootstrap.min.css',
       'font-awesome/css/font-awesome.min.css',
+      'admin-lte/dist/css/AdminLTE.min.css',
+      'admin-lte/dist/css/skins/_all-skins.min.css',
       'antd/lib/index.css'
     ]
   },
