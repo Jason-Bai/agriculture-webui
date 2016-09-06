@@ -149,7 +149,6 @@ function quotes(state = {
 
 const rootReducer = combineReducers({
   auth,
-  quotes,
   routing: routerReducer
 })
 

@@ -1,3 +1,4 @@
+import { api } from '../config'
 // actions.js
 
 // There are three possible states for our login
@@ -36,17 +37,18 @@ function loginError(message) {
 // Calls the API to get a token and
 // dispatches actions alone the way
 export function loginUser(creds) {
+
   let config = {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body:`username=${creds.username}&passowrd=${creds.password}`
+    body:`name=${creds.username}&passowrd=${creds.password}`
   }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:3001/sessions/create', config)
+    return fetch(`${api}/authenticate`, config)
       .then(response =>
         response.json()
           .then(user => ({ user, response }))
@@ -58,7 +60,7 @@ export function loginUser(creds) {
               return Promise.reject(user)
             } else {
               // If login was successful, set the token in local storage
-              localStorage.setItem('id_token', user.id_token)
+              localStorage.setItem('id_token', user.token)
               dispatch(receiveLogin(user))
             }
           })

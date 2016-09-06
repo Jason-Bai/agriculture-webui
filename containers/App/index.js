@@ -53,8 +53,7 @@ import { loginUser } from '../../actions'
 
 
 import Login from '../../components/Login'
-import Navbar from '../../components/Navbar'
-import Quotes from '../../components/Quotes'
+import Header from '../../components/Header'
 
 class App extends Component {
   render() {
@@ -62,18 +61,24 @@ class App extends Component {
 
     return (
       <div>
-         <header className="main-header">
-          header
-         </header>
-         <aside className="main-sidebar">
-          aside
-         </aside>
-        <div className="content-wrapper">
-        content
+      
+      {!isAuthenticated &&
+        <Login onLoginClick={ loginUser } errorMessage={errorMessage} />
+      }
+      {isAuthenticated &&
+        <div>
+          <Header />
+          <aside className="main-sidebar">
+            aside
+          </aside>
+          <div className="content-wrapper">
+          content
+          </div>
+          <footer className="main-footer">
+          footer
+          </footer>
         </div>
-        <footer className="main-footer">
-        footer
-        </footer>
+      }
       </div>
     )
   }
