@@ -21,7 +21,7 @@ function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    id_token: user.id_token
+    id_token: user.token
   }
 }
 
@@ -37,11 +37,10 @@ function loginError(message) {
 // Calls the API to get a token and
 // dispatches actions alone the way
 export function loginUser(creds) {
-
   let config = {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body:`name=${creds.username}&passowrd=${creds.password}`
+    body:`name=${creds.username}&password=${creds.password}`
   }
 
   return dispatch => {
@@ -51,9 +50,9 @@ export function loginUser(creds) {
     return fetch(`${api}/authenticate`, config)
       .then(response =>
         response.json()
-          .then(user => ({ user, response }))
-          .then(({ user, response}) => {
-            if (!response.ok) {
+          .then(user => ({ user }))
+          .then(({ user }) => {
+            if (!user.ok) {
               // If there was a problem, we want to
               // dispatch the error condition
               dispatch(loginError(user.message))

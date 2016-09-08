@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
   render() {
     const { errorMessage } = this.props
 
@@ -37,7 +32,7 @@ export default class Login extends Component {
       margin: '0px',
       padding: '0px',
       border: '0px',
-      opacity: 0, 
+      opacity: 0,
       background: 'rgb(255, 255, 255)'
     }
 
@@ -59,42 +54,40 @@ export default class Login extends Component {
               Sign in to start your session
             </p>
           }
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group has-feedback">
-              <input type='text' ref='username' className='form-control' placeholder='Username' />
-              <span className="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div className="form-group has-feedback">
-              <input type='password' ref='password' className='form-control' placeholder='Password' />
-              <span className="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div className="row">
-              <div className="col-xs-8">
-                <div className="checkbox icheck">
-                  <label>
-                    <div className="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style={ iCheckStyle }>
-                      <input type="checkbox" style={ checkboxStyles } />
-                      <ins className="iCheck-helper" style={iCheckHelperStyle}></ins>
-                    </div> Remember Me
+          <div className="form-group has-feedback">
+            <input type='text' ref='username' className='form-control' placeholder='Username' />
+            <span className="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div className="form-group has-feedback">
+            <input type='password' ref='password' className='form-control' placeholder='Password' />
+            <span className="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div className="row">
+            <div className="col-xs-8">
+              <div className="checkbox icheck">
+                <label>
+                  <div className="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style={ iCheckStyle }>
+                    <input type="checkbox" style={ checkboxStyles } />
+                    <ins className="iCheck-helper" style={iCheckHelperStyle}></ins>
+                  </div> Remember Me
                 </label>
-                </div>
               </div>
-              <div className="col-xs-4">
-                <button type="submit" className="btn btn-primary btn-block btn-flat">Sign In</button>
-              </div>
-              </div>
-          </form>
+            </div>
+            <div className="col-xs-4">
+              <button className="btn btn-primary btn-block btn-flat" onClick={(event) => this.handleClick(event)}>Sign In</button>
+            </div>
+          </div>
         </div>
       </div>
     )
   }
 
-  handleSubmit(vent) {
+  handleClick(evt) {
     const username = this.refs.username
-        const password = this.refs.password
-        const creds = { name: username.value.trim(), password: password.value.trim() }
-        this.props.onLoginClick(creds)
-        return false;
+    const password = this.refs.password
+    const creds = { username: username.value.trim(), password: password.value.trim() }
+    console.log(creds)
+    this.props.onLoginClick(creds)
   }
 }
 
