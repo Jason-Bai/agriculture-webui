@@ -1,76 +1,53 @@
-/*
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loggedIn: false
-    }
-  }
-
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
-  }
-
-  render() {
-    const { session } = this.props
-    return (
-      <div>
-        <ul>
-          <li>
-            {this.state.loggedIn ? (
-              <Link to="/logout">Log out</Link>
-            ) : (
-                <Link to="/login">Sign in</Link>
-              ) }
-          </li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link> (authenticated) </li>
-        </ul>
-        {this.props.children || <p>You are {!this.state.loggedIn && 'not'} logged in.</p>}
-      </div>
-    )
-  }
-}
-
-function mapStateToProps(state) {
-  const { session } = state
-  return {
-    session
-  }
-}
-
-
-export default connect(mapStateToProps)(App)
-*/
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../../actions'
 
-
 import Login from '../../components/Login'
-import Navbar from '../../components/Navbar'
-import Quotes from '../../components/Quotes'
+import Header from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
+import Footer from '../../components/Footer'
+
+import { AdminLTE } from '../../config'
 
 class App extends Component {
+
+  componentDidMount() {
+    const { isAuthenticated } = this.props
+    if (isAuthenticated) {
+      $('body').attr('class', `hold-transition ${AdminLTE.theme}`)
+    } else {
+      $('body').attr('class', `hold-transition ${AdminLTE.loginTheme}`)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isAuthenticated) {
+      $('body').attr('class', `hold-transition ${AdminLTE.theme}`)
+    } else {
+      $('body').attr('class', `hold-transition ${AdminLTE.loginTheme}`)
+    }
+  }
+
   render() {
-    const { isAuthenticated, errorMessage } = this.props
+
+    const { dispatch, isAuthenticated, errorMessage } = this.props
 
     return (
       <div>
-        <Navbar
-          isAuthenticated={isAuthenticated}
-          errorMessage={errorMessage}
-          />
-        <div className='container'>
-          <row>
-
-          </row>
+      
+      {!isAuthenticated &&
+        <Login onLoginClick={ creds => dispatch(loginUser(creds)) } errorMessage={errorMessage} />
+      }
+      {isAuthenticated &&
+        <div>
+          <Header />
+          <Sidebar />
+          <div className="content-wrapper">
+            {this.props.children}
+          </div>
+          <Footer />
         </div>
+      }
       </div>
     )
   }
@@ -88,6 +65,7 @@ function mapStateToProps(state) {
   const { isAuthenticated, errorMessage } = state.auth
 
   return {
+    dispatch: PropTypes.func.isRequired,
     isAuthenticated,
     errorMessage
   }

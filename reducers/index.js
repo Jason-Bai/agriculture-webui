@@ -122,7 +122,7 @@ function auth(state = {
   }
 }
 
-function quotes(state = {
+function users(state = {
   isFetching: false,
   quote: '',
   authenticated: false 
@@ -149,7 +149,6 @@ function quotes(state = {
 
 const rootReducer = combineReducers({
   auth,
-  quotes,
   routing: routerReducer
 })
 

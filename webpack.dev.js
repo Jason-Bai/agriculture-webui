@@ -12,7 +12,11 @@ module.exports = {
     ],
     vendor: [
       'bootstrap/dist/css/bootstrap.min.css',
+      'bootstrap/dist/css/bootstrap-theme.min.css',
       'font-awesome/css/font-awesome.min.css',
+      'bootstrap/dist/js/bootstrap.min.js',
+      'admin-lte/dist/css/AdminLTE.min.css',
+      'admin-lte/dist/css/skins/_all-skins.min.css',
       'antd/lib/index.css'
     ]
   },
@@ -24,6 +28,11 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      $ : 'jquery',
+      jQuery : 'jquery',
+      'window.jQuery' : 'jquery'
+    }),
     new ExtractTextPlugin("css/[name].css")
   ],
   module: {
