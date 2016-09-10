@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './containers/App'
+import Dashboard from './containers/Dashboard'
 import Users from './containers/Users'
 import Categories from './containers/Categories'
 import Articles from './containers/Articles'

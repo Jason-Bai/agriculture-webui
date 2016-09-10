@@ -7,16 +7,24 @@ import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 
-import { themeClass } from '../../config'
+import { AdminLTE } from '../../config'
 
 class App extends Component {
 
   componentDidMount() {
-    const { isAuthenticated, errorMessage } = this.props
+    const { isAuthenticated } = this.props
     if (isAuthenticated) {
-      $('body').attr('class', `hold-transition ${themeClass}`)
+      $('body').attr('class', `hold-transition ${AdminLTE.theme}`)
     } else {
-      $('body').attr('class', 'hold-transition login-page')
+      $('body').attr('class', `hold-transition ${AdminLTE.loginTheme}`)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isAuthenticated) {
+      $('body').attr('class', `hold-transition ${AdminLTE.theme}`)
+    } else {
+      $('body').attr('class', `hold-transition ${AdminLTE.loginTheme}`)
     }
   }
 

@@ -37,6 +37,7 @@ function loginError(message) {
 // Calls the API to get a token and
 // dispatches actions alone the way
 export function loginUser(creds) {
+
   let config = {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},

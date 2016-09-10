@@ -14,6 +14,7 @@ module.exports = {
       'bootstrap/dist/css/bootstrap.min.css',
       'bootstrap/dist/css/bootstrap-theme.min.css',
       'font-awesome/css/font-awesome.min.css',
+      'bootstrap/dist/js/bootstrap.min.js',
       'admin-lte/dist/css/AdminLTE.min.css',
       'admin-lte/dist/css/skins/_all-skins.min.css',
       'antd/lib/index.css'

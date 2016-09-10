@@ -1,41 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 
+import { LoginFormStyels } from '../../config'
+
 export default class Login extends Component {
+
   render() {
     const { errorMessage } = this.props
-
-    const checkboxStyles = {
-      position: 'absolute',
-      top: '-20%',
-      left: '-20%',
-      display: 'block',
-      width: '140%',
-      height: '140%',
-      margin: '0px',
-      padding: '0px',
-      border: '0px',
-      opacity: 0,
-      background: 'rgb(255, 255, 255)'
-    }
-
-    const iCheckStyle = {
-      position: 'relative'
-    }
-
-    const iCheckHelperStyle = {
-      position: 'absolute',
-      top: '-20%',
-      left: '-20%',
-      display: 'block',
-      width: '140%',
-      height: '140%',
-      margin: '0px',
-      padding: '0px',
-      border: '0px',
-      opacity: 0,
-      background: 'rgb(255, 255, 255)'
-    }
-
     return (
       <div className="login-box">
         <div className="login-logo">
@@ -66,15 +36,15 @@ export default class Login extends Component {
             <div className="col-xs-8">
               <div className="checkbox icheck">
                 <label>
-                  <div className="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style={ iCheckStyle }>
-                    <input type="checkbox" style={ checkboxStyles } />
-                    <ins className="iCheck-helper" style={iCheckHelperStyle}></ins>
+                  <div className="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style={ LoginFormStyels.iCheckStyle }>
+                    <input type="checkbox" style={ LoginFormStyels.checkboxStyles } />
+                    <ins className="iCheck-helper" style={ LoginFormStyels.iCheckHelperStyle }></ins>
                   </div> Remember Me
                 </label>
               </div>
             </div>
             <div className="col-xs-4">
-              <button className="btn btn-primary btn-block btn-flat" onClick={(event) => this.handleClick(event)}>Sign In</button>
+              <button className="btn btn-primary btn-block btn-flat" onClick={(event) => this.handleClick(event) }>Sign In</button>
             </div>
           </div>
         </div>
