@@ -1,13 +1,17 @@
 import React, { Component, PropTypes } from 'react'
-import Login from '../Login'
+
+import Logo from '../Logo'
+import Navbar from '../Navbar'
 import Logout from '../Logout'
-import { loginUser, logoutUser } from '../../actions'
+
+import { logoutUser } from '../../actions'
 
 export default class Header extends Component {
   render() {
     return (
-      <header>
-
+      <header className="main-header">
+        <Logo />
+        <Navbar />
       </header>
     )
   }

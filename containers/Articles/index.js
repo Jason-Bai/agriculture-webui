@@ -1,15 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 
-class NotFound extends Component {
+export default class Articles extends Component {
 
   render() {
     
     return (
       <div>
-        Not found!
+        Articles
       </div>
     )
   }
 }
-
-export default NotFound

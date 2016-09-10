@@ -105,29 +105,64 @@ export function logoutUser() {
 // The middleware to call the API for quotes
 import { CALL_API } from '../middleware/api'
 
-export const QUOTE_REQUEST = 'QUOTE_REQUEST'
-export const QUOTE_SUCCESS = 'QUOTE_SUCCESS'
-export const QUOTE_FAILURE = 'QUOTE_FAILURE'
+export const USERS_REQUEST = 'QUOTE_REQUEST'
+export const USERS_SUCCESS = 'QUOTE_SUCCESS'
+export const USERS_FAILURE = 'QUOTE_FAILURE'
 
-// Uses the API middleware to get a quote
-export function fetchQuote() {
+
+
+function requestUsers(users = [], total_num = 0) {
   return {
-    [CALL_API]: {
-      endpoint: 'random-quote',
-      types: [QUOTE_REQUEST, QUOTE_SUCCESS, QUOTE_FAILURE]
-    }
+    type: USERS_REQUEST,
+    isFetching: true,
+    total_num: total_num,
+    users
   }
 }
 
-// Same API middleware is used to get a
-// secret quote, but we set authenticated
-// to true so that the auth header is sent
-export function fetchSecretQuote() {
+function receiveUsers(users, total_num) {
   return {
-    [CALL_API]: {
-      endpoint: 'protected/random-quote',
-      authenticated: true,
-      types: [QUOTE_REQUEST, QUOTE_SUCCESS, QUOTE_FAILURE]
-    }
+    type: USERS_SUCCESS,
+    isFetching: false,
+    total_num: total_num,
+    users
+  }
+}
+
+function errorUsers(message) {
+  return {
+    type: USERS_FAILURE,
+    isFetching: false,
+    total_num: 0,
+    message
+  }
+}
+
+
+export function fetchUsers() {
+  let config = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'x-access-token': localStorage.getItem('id_token')}
+  }
+
+  return dispatch => {
+    // We dispatch requestLogin to kickoff the call to the API
+    dispatch(requestUsers())
+
+    return fetch(`${api}/users`, config)
+      .then(response =>
+        response.json()
+          .then(users => ({ result }))
+          .then(({ result }) => {
+            if (!result.ok) {
+              // If there was a problem, we want to
+              // dispatch the error condition
+              dispatch(errorUsers(result.message))
+              return Promise.reject(result)
+            } else {
+              dispatch(receiveUsers(result.users, result.total_num))
+            }
+          })
+      ).catch(err => console.log("Error: ", err))
   }
 }

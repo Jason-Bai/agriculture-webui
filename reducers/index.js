@@ -122,7 +122,7 @@ function auth(state = {
   }
 }
 
-function quotes(state = {
+function users(state = {
   isFetching: false,
   quote: '',
   authenticated: false 

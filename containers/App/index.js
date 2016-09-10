@@ -4,6 +4,8 @@ import { loginUser } from '../../actions'
 
 import Login from '../../components/Login'
 import Header from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
+import Footer from '../../components/Footer'
 
 import { themeClass } from '../../config'
 
@@ -31,15 +33,11 @@ class App extends Component {
       {isAuthenticated &&
         <div>
           <Header />
-          <aside className="main-sidebar">
-            aside
-          </aside>
+          <Sidebar />
           <div className="content-wrapper">
-          content
+            {this.props.children}
           </div>
-          <footer className="main-footer">
-          footer
-          </footer>
+          <Footer />
         </div>
       }
       </div>
