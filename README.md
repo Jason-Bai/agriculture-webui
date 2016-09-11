@@ -5,7 +5,7 @@
 ### 安装
 1. npm install
 2. npm start
-3. open http://127.0.0.1:3000
+3. node index.js or supervisor index.js 
 
 ### 开发须知
 1. 在docs/branches目录下新建branch_yourname.md，主要记录分析的中文说明
